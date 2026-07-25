@@ -1,37 +1,57 @@
-# Personal Portfolio — Satya Srujana Pilli
+# Satya Srujana Pilli - Personal Portfolio
 
-Two versions — pick your vibe:
+This repository is the single source of truth for
+[satyasrujanapilli.com](https://satyasrujanapilli.com/). It contains two
+portfolio editions backed by shared education and career information.
 
-| Version | Path | Vibe |
-|---------|------|------|
-| **Classic** | `personalportfolio.html` or `index.html` | Professional portfolio, clean dark theme |
-| **Fun** | `fun/` | Brooklyn Nine-Nine precinct dossier · coffee · movies |
+| Edition | Entry point | Content | Styles |
+| --- | --- | --- | --- |
+| Professional | `index.html` | `personalportfolio.js` | `personalportfolio.css` |
+| Fun | `fun/index.html` | `fun/app.js` | `fun/styles.css` |
 
 ## Preview locally
-
-Open `index.html` or `personalportfolio.html` in a browser, or run:
 
 ```bash
 python3 -m http.server 8080
 ```
 
-Then visit `http://localhost:8080` (classic) or `http://localhost:8080/fun/` (fun edition).
+Then open:
 
-## Edit content
+- Professional: `http://localhost:8080/`
+- Fun: `http://localhost:8080/fun/`
 
-- **Classic:** `personalportfolio.js` → `PORTFOLIO` object  
-- **Fun:** `fun/app.js` → `DOSSIER` object  
+## Content maintenance
 
-## Fun edition extras
+- Update professional content in the `PORTFOLIO` object in
+  `personalportfolio.js`.
+- Update fun-edition content in the `DOSSIER` object in `fun/app.js`.
+- Keep education, coursework, dates, and contact information aligned between
+  both objects.
+- Keep the UMass Amherst Web Ring badge in the professional edition only. Its
+  configuration and renderer live in `personalportfolio.js`.
+- `personalportfolio.html` is retained as a legacy direct URL; `index.html` is
+  the canonical professional entry point.
 
-- ☕ Click the coffee mug (bottom-right) to refill caffeine  
-- Type **noice** anywhere, or triple-click your name  
-- Rotating precinct quotes in the hero  
+## Repository structure
 
-## Deploy (GitHub Pages)
+```text
+.
+├── index.html
+├── personalportfolio.html
+├── personalportfolio.css
+├── personalportfolio.js
+├── assets/
+├── fun/
+│   ├── index.html
+│   ├── styles.css
+│   └── app.js
+└── CNAME
+```
 
-Push to GitHub and enable Pages for this repo (branch `main`, folder `/` root). The site will load at:
+## Deployment
 
-`https://mohanasrujana.github.io/Personal-Portfolio-Webpage/`
+GitHub Pages deploys directly from the `main` branch root. The `CNAME` file
+maps the site to [satyasrujanapilli.com](https://satyasrujanapilli.com/).
 
-Easter eggs and playful interactions live in the **fun** edition only (`fun/`).
+Do not create nested repository or deployment-copy folders inside this
+repository. Preview and deploy from the root.

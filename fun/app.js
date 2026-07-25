@@ -16,7 +16,7 @@ const DOSSIER = {
   },
   about: [
     "Subject began at Amazon Bangalore as a full-stack SDE—payment services, item-level financing, and WebLabs experiments across six EU/UK markets. Verdict: \"production-ready\" is not a vibe; it's a requirement.",
-    "Earned MS Computer Science at UMass Amherst (Sep 2024 – May 2026, CGPA 3.96). Closed cases include gaze-based preference learning at CIIR Lab, adaptive LLM agent monitoring at Cisco, and forensic AI pipelines at RescueLab.",
+    "Earned MS Computer Science at UMass Amherst (Sep 2024 – May 2026, CGPA 3.97). Closed cases include gaze-based preference learning at CIIR Lab, adaptive LLM agent monitoring at Cisco, and forensic AI pipelines at RescueLab.",
     "Current assignment: BINDS Lab under Prof. Hava Siegelmann—biologically inspired neural architectures, modular ML systems, and research tooling for neural network experimentation.",
     "Prior education: B.E. Computer Science, BITS Pilani Hyderabad (2018–2022). Open to full-stack SDE, AI/ML engineer, and software ML research roles.",
   ],
@@ -24,12 +24,34 @@ const DOSSIER = {
     {
       school: "UMass Amherst",
       degree: "MS Computer Science",
-      detail: "CGPA 3.96 · Sep 2024 – May 2026",
+      detail: "CGPA 3.97 · Sep 2024 – May 2026",
+      coursework: [
+        "Neural Networks",
+        "Machine Learning",
+        "Reinforcement Learning",
+        "Artificial Intelligence",
+        "Advanced Algorithms",
+        "Software Engineering",
+        "Computer & Network Security",
+        "System Defense & Testing",
+        "Applied Statistics",
+      ],
     },
     {
       school: "BITS Pilani Hyderabad",
       degree: "B.E. Computer Science",
       detail: "CGPA 8.33 · 2018–2022",
+      coursework: [
+        "Data Structures & Algorithms",
+        "Operating Systems",
+        "Database Systems",
+        "Computer Networks",
+        "Machine Learning",
+        "Artificial Intelligence",
+        "Information Retrieval",
+        "Computer Architecture",
+        "Compiler Construction",
+      ],
     },
   ],
   vibes: {
@@ -300,8 +322,14 @@ function renderDossier() {
     .join("");
   const edu = DOSSIER.education
     .map(
-      (e) =>
-        `<span class="edu-stamp">${escapeHtml(e.school)} · ${escapeHtml(e.degree)} (${escapeHtml(e.detail)})</span>`
+      (e) => `
+        <article class="edu-record">
+          <p class="edu-stamp">${escapeHtml(e.school)} · ${escapeHtml(e.degree)} (${escapeHtml(e.detail)})</p>
+          <p class="edu-record__label">Relevant coursework</p>
+          <div class="edu-record__courses">
+            ${e.coursework.map((course) => `<span>${escapeHtml(course)}</span>`).join("")}
+          </div>
+        </article>`
     )
     .join("");
   document.getElementById("dossier-body").innerHTML =

@@ -17,7 +17,7 @@ const PORTFOLIO = {
   },
   heroHighlights: [
     { label: "BINDS Lab", sub: "Software ML research", pos: "tl" },
-    { label: "UMass Amherst", sub: "MS CS · CGPA 3.96", pos: "tr" },
+    { label: "UMass Amherst", sub: "MS CS · CGPA 3.97", pos: "tr" },
     { label: "Amazon", sub: "Full-stack SDE · ex-SDE", pos: "bl" },
     { label: "Focus", sub: "AI · Software ML research", pos: "br" },
   ],
@@ -27,26 +27,55 @@ const PORTFOLIO = {
     // Set to another member's id (e.g. "haylin") to preview prev/next locally before your PR merges
     devPreviewMemberId: null,
     hubUrl: "https://umaring.github.io/",
-    src: "assets/umass-amherst-webring.png",
+    src: "https://umaring.github.io/umass.png",
     alt: "UMass Amherst Web Ring",
     width: 88,
     height: 31,
   },
   about: [
     "I earned my B.E. in Computer Science from BITS Pilani Hyderabad (2018–2022), then spent two years at Amazon Bangalore as a full-stack SDE—building and shipping payment services, item-level financing, and WebLabs experiments used across six EU and UK markets.",
-    "I completed my M.S. in Computer Science at UMass Amherst (Sep 2024 – May 2026, CGPA 3.96). In grad school I built ML and LLM systems: gaze-based preference learning at CIIR, adaptive LLM agent monitoring at Cisco, and forensic AI pipelines at RescueLab.",
+    "I completed my M.S. in Computer Science at UMass Amherst (Sep 2024 – May 2026, CGPA 3.97). In grad school I built ML and LLM systems: gaze-based preference learning at CIIR, adaptive LLM agent monitoring at Cisco, and forensic AI pipelines at RescueLab.",
     "I now work in the BINDS Lab under Prof. Hava Siegelmann, conducting research on biologically inspired neural architectures and modular machine learning systems, while building production-quality research infrastructure and tooling for neural network experimentation.",
 ],
   education: [
     {
       school: "UMass Amherst",
       degree: "MS Computer Science",
-      detail: "CGPA 3.96 · Sep 2024 – May 2026",
+      detail: "CGPA 3.97 · Sep 2024 – May 2026",
+      coursework: [
+        "Neural Networks",
+        "Machine Learning",
+        "Reinforcement Learning",
+        "Artificial Intelligence",
+        "Advanced Algorithms",
+        "Software Engineering",
+        "Computer & Network Security",
+        "System Defense & Testing",
+        "Applied Statistics",
+        "ML Applied to Child Rescue",
+        "AI Project",
+      ],
     },
     {
       school: "BITS Pilani Hyderabad",
       degree: "B.E. Computer Science",
       detail: "CGPA 8.33 · 2018–2022",
+      coursework: [
+        "Data Structures & Algorithms",
+        "Design & Analysis of Algorithms",
+        "Operating Systems",
+        "Database Systems",
+        "Computer Networks",
+        "Machine Learning",
+        "Artificial Intelligence",
+        "Neural Networks & Fuzzy Logic",
+        "Information Retrieval",
+        "Computer Architecture",
+        "Compiler Construction",
+        "Theory of Computation",
+        "Object-Oriented Programming",
+        "Probability & Statistics",
+      ],
     },
   ],
   skills: {
@@ -256,7 +285,7 @@ function init() {
 function webringBadgeMarkup(webring) {
   const hub = webring.hubUrl || webring.href || "https://umaring.github.io/";
   return `
-    <a class="webring-badge" href="${hub}" target="_blank" rel="noopener noreferrer" title="${escapeHtml(webring.alt)}">
+    <a class="webring-badge" href="${hub}" target="_blank" rel="noopener noreferrer" title="${escapeHtml(webring.alt)}" aria-label="Visit the UMass Amherst Web Ring">
       <img
         class="webring-badge__img"
         src="${webring.src}"
@@ -430,8 +459,17 @@ function renderAbout() {
     .join("");
   const edu = PORTFOLIO.education
     .map(
-      (e) =>
-        `<span class="education-tag"><strong>${escapeHtml(e.school)}</strong> · ${escapeHtml(e.degree)} · ${escapeHtml(e.detail)}</span>`
+      (e) => `
+        <article class="education-card">
+          <p class="education-card__heading">
+            <strong>${escapeHtml(e.school)}</strong> · ${escapeHtml(e.degree)}
+          </p>
+          <p class="education-card__detail">${escapeHtml(e.detail)}</p>
+          <p class="education-card__label">Relevant coursework</p>
+          <div class="education-card__courses">
+            ${e.coursework.map((course) => `<span>${escapeHtml(course)}</span>`).join("")}
+          </div>
+        </article>`
     )
     .join("");
   container.innerHTML = `${paragraphs}<div class="education-tags">${edu}</div>`;
