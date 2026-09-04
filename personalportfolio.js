@@ -10,7 +10,7 @@ const PORTFOLIO = {
   skillsLede:
     "Stack for full-stack product development, ML engineering, and research code—from APIs and front ends to model training and deployment.",
   projectsLede:
-    "Full-stack and ML builds: LLM-powered tools, summarization products, and research software with measurable impact.",
+    "Full-stack products, AI systems, and research software—from collaborative decision tools to verified neural computation.",
   photo: {
     src: "assets/profile.jpg",
     alt: "Portrait of Satya Srujana Pilli",
@@ -205,8 +205,64 @@ const PORTFOLIO = {
   ],
   projects: [
     {
-      title: "LLM-Powered Crime Element Analyzer",
+      title: "Decide Together",
+      context: "Collaborative decision platform",
+      status: "Working build",
+      initial: "DT",
+      visualClass: "decide",
+      story:
+        "Built an invite-only collaborative workspace where groups define options and weighted criteria, score choices together, discuss them in real time, and generate an AI-assisted summary of the final ranking.",
+      tech: ["React", "TypeScript", "Cloudflare Workers", "Hono", "Yjs", "Vercel AI SDK"],
+      repo: "https://github.com/mohanasrujana/Decide-together",
+    },
+    {
+      title: "TripWeave",
+      context: "Production-grade group trip planner",
+      status: "In development",
+      initial: "TW",
+      visualClass: "tripweave",
+      story:
+        "Developing a collaborative trip-planning platform with a React and TypeScript client and a Java 21 Spring Boot API. The tested walking skeleton includes live API health states, automated component and backend tests, and a documented engineering roadmap toward planning, voting, itineraries, and shared expenses.",
+      tech: ["React", "TypeScript", "Java 21", "Spring Boot", "Vite", "Vitest"],
+      repo: "https://github.com/mohanasrujana/TripWeave",
+    },
+    {
+      title: "DSA Sprint",
+      context: "Interview preparation web app",
+      status: "Working build",
+      initial: "DS",
+      visualClass: "dsa",
+      story:
+        "Created a 45-day interview-practice dashboard that unifies problems from Striver A2Z, NeetCode 150, Blind 75, and LeetCode Top Interview 150, with topic and difficulty filters, saved problems, progress tracking, and a week-by-week plan.",
+      tech: ["React", "TypeScript", "Next.js", "Vite", "JSON"],
+    },
+    {
+      title: "TRACE",
+      context: "Published LLM-agent monitoring research",
+      status: "Published",
+      initial: "TR",
+      visualClass: "trace",
+      story:
+        "Co-developed a training-free Triage-Inspect-Judge framework that aggregates evidence across agent steps to detect covert sabotage and hidden objectives. Evaluated on 463 SHADE-Arena trajectories across 10 domains and five LLM backbones, reaching 0.844 recall and 0.713 F1 with 35% fewer LLM calls than the sequential baseline.",
+      tech: ["LLM Evaluation", "Agent Monitoring", "ReAct", "Python", "SHADE-Arena"],
+      repo: "https://arxiv.org/abs/2606.07054",
+      linkLabel: "Read the paper",
+    },
+    {
+      title: "Neural Network Blocks",
+      context: "BINDS Lab research software",
+      status: "Active research",
+      initial: "NB",
+      visualClass: "neural",
+      story:
+        "Built a verified database of small neural networks for Boolean gates, compositional circuits, and symbolic programs. The system generates truth tables, trains threshold, sigmoid, and MLP implementations, checks exact equivalence, and serializes portable network weights.",
+      tech: ["Python", "PyTorch", "Neural Networks", "Symbolic Logic", "JSON"],
+      repo: "https://github.com/mohanasrujana/neural-network-blocks",
+    },
+    {
+      title: "Message Analyzer",
       context: "UMass RescueLab · Prof. Brian Levine",
+      status: "Deployed research tool",
       initial: "CE",
       visualClass: "crime",
       story:
@@ -217,12 +273,35 @@ const PORTFOLIO = {
     {
       title: "Briefly",
       context: "Full-stack · AI product",
+      status: "Launched",
       initial: "BR",
       visualClass: "briefly",
       story:
         "Built a full-stack AI-powered document summarization platform using React, Flask, MongoDB, and Mistral AI, achieving ~95% summarization accuracy. Supported processing of over 100 files per day for 50+ users and improved backend performance by 30% through system optimization.",
       tech: ["React", "Flask", "MistralAI", "MongoDB", "Axios"],
       repo: "https://github.com/mohanasrujana/briefly",
+    },
+    {
+      title: "Clothing Attribute Recognizer",
+      context: "Computer vision inference system",
+      status: "Working build",
+      initial: "CA",
+      visualClass: "clothing",
+      story:
+        "Developed a dual-head ResNet-18 pipeline that predicts clothing categories and visual attributes from images, then exported the model to ONNX for portable inference through a batch CLI and Flask-ML API.",
+      tech: ["Python", "PyTorch", "ResNet-18", "ONNX Runtime", "Flask-ML"],
+      repo: "https://github.com/mohanasrujana/clothing-attribute-recognizer",
+    },
+    {
+      title: "Digital Twin",
+      context: "Local-first personal memory vault",
+      status: "Foundation complete",
+      initial: "DT",
+      visualClass: "digital-twin",
+      story:
+        "Designed and scaffolded a privacy-conscious memory system that will turn saved text into structured, tagged objects and retrieve them from local storage before consulting outside sources. The package architecture, schemas, storage policy, tests, and phased implementation plan are in place.",
+      tech: ["Python", "JSON", "CLI", "Schema Design", "Unit Testing"],
+      repo: "https://github.com/mohanasrujana/digital-twin",
     },
   ],
   sections: [
@@ -542,7 +621,10 @@ function renderProjects() {
           <span class="project-card__initial" aria-hidden="true">${escapeHtml(p.initial)}</span>
         </div>
         <div class="project-card__body">
-          <p class="project-card__context">${escapeHtml(p.context)}</p>
+          <div class="project-card__meta">
+            <p class="project-card__context">${escapeHtml(p.context)}</p>
+            ${p.status ? `<span class="project-card__status">${escapeHtml(p.status)}</span>` : ""}
+          </div>
           <h3 class="project-card__title">${escapeHtml(p.title)}</h3>
           <p class="project-card__story">${escapeHtml(p.story)}</p>
           <div class="project-card__tech">
@@ -550,7 +632,7 @@ function renderProjects() {
           </div>
           ${
             p.repo
-              ? `<a class="project-card__link" href="${p.repo}" target="_blank" rel="noopener noreferrer">View source →</a>`
+              ? `<a class="project-card__link" href="${p.repo}" target="_blank" rel="noopener noreferrer">${escapeHtml(p.linkLabel || "View source")} →</a>`
               : ""
           }
         </div>

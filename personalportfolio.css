@@ -1153,6 +1153,34 @@ main {
   background: linear-gradient(135deg, #1a2428 0%, #243338 50%, #2e4248 100%);
 }
 
+.project-card__visual--decide {
+  background: linear-gradient(135deg, #18243a 0%, #243a5a 52%, #315372 100%);
+}
+
+.project-card__visual--tripweave {
+  background: linear-gradient(135deg, #172d31 0%, #20505a 52%, #2f7180 100%);
+}
+
+.project-card__visual--dsa {
+  background: linear-gradient(135deg, #28213a 0%, #40365a 52%, #5d4c7c 100%);
+}
+
+.project-card__visual--trace {
+  background: linear-gradient(135deg, #311f26 0%, #53303c 52%, #784657 100%);
+}
+
+.project-card__visual--neural {
+  background: linear-gradient(135deg, #252730 0%, #3b4253 52%, #586378 100%);
+}
+
+.project-card__visual--clothing {
+  background: linear-gradient(135deg, #30261e 0%, #564333 52%, #786047 100%);
+}
+
+.project-card__visual--digital-twin {
+  background: linear-gradient(135deg, #1d2d29 0%, #304c45 52%, #477066 100%);
+}
+
 .project-card__initial {
   font-family: var(--font-display);
   font-size: 1.5rem;
@@ -1165,11 +1193,32 @@ main {
   padding: 1.5rem;
 }
 
+.project-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.45rem 0.75rem;
+  margin-bottom: 0.35rem;
+}
+
 .project-card__context {
   font-size: 0.8rem;
   color: var(--text-muted);
   font-weight: 600;
-  margin-bottom: 0.35rem;
+}
+
+.project-card__status {
+  padding: 0.18rem 0.5rem;
+  border: 1px solid rgba(107, 148, 184, 0.25);
+  border-radius: 999px;
+  color: var(--accent-muted);
+  background: var(--accent-soft);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1.35;
+  text-transform: uppercase;
 }
 
 .project-card__title {
